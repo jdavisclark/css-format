@@ -67,7 +67,7 @@ opts.indent_comment_body=False
 opts.one_line_comments_under_max=False
 soutput = StringIO()
 
-formatter = CssFormatter(my_css, soutput, opts)
+formatter = CssFormatter(my_css, soutput, opts=opts)
 formatter.format()
 sweet_code = soutput.getvalue()
 soutput.close()
