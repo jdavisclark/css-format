@@ -14,11 +14,15 @@ class CssFormatOptions(object):
 		self.no_space_after = ["["]
 		self.end_with_newline=False
 
-		#comment formatting
+		# comment formatting
 		self.comment_line_max = 100
 		self.blank_line_above_comments=True
 		self.indent_comment_body=True
 		self.one_line_comments_under_max=True
+
+		# misc
+		self.close_input=True
+		self.close_output=False
 
 
 # Forked from: http://www.python-forum.org/pythonforum/viewtopic.php?f=2&t=24947
@@ -50,6 +54,18 @@ def word_wrap(string, width=80, pre_first=0, pre_middle=0, prefix='', separators
 
     return newstring + string
 
+def format_css(css, opts=CssFormatOptions()):
+    # dont care if you specified values other than these, we are using the defaults
+	opts.close_input = True
+	opts.close_output = False
+
+	sout = StringIO()
+	formatter = CssFormatter(css, sout, opts)
+	formatter.format()
+	sweet_code = sout.getvalue()
+	sout.close()
+
+	return sweet_code
 
 class CssFormatter(Scanner):
 	"""css formatter"""
@@ -253,4 +269,9 @@ class CssFormatter(Scanner):
 			self.write_newline()
 
 		self.flush_output()
-		self.close()
+		
+		if(self.opts.close_input):
+			self.close_input()
+
+		if(self.opts.close_output):
+			self.close_output()

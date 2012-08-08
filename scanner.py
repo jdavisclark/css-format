@@ -63,8 +63,8 @@ class Scanner(object):
 	def flush_output(self):
 		"""flush the output and then call fsync if possible"""
 		self.output_stream.flush()
-		if(hasattr(self.output_stream, "fsync")):
-			self.output_stream.fsync()
+		if(type(self.output_stream) == file):
+			os.fsync(self.output_stream.fileno())
 
 	def close_input(self):
 		"""closes the input stream"""

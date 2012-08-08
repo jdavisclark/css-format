@@ -2,3 +2,4 @@
 *.sublime-workspace
 *.pyc
 output.css
+test.py
