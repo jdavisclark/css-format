@@ -1,6 +1,6 @@
 import re
 from StringIO import StringIO
-from scanner import Scanner
+from SourceIO import SourceIO
 
 class CssFormatOptions(object):
 	"""css formatting options"""
@@ -56,8 +56,9 @@ def word_wrap(string, width=80, pre_first=0, pre_middle=0, prefix='', separators
 
 def format_css(css, opts=CssFormatOptions()):
     # dont care if you specified values other than these, we are using the defaults
-	opts.close_input = True
-	opts.close_output = False
+	defaults = CssFormatOptions()
+	opts.close_input = defaults.close_input
+	opts.close_output = defaults.close_output
 
 	sout = StringIO()
 	formatter = CssFormatter(css, sout, opts)
@@ -67,7 +68,7 @@ def format_css(css, opts=CssFormatOptions()):
 
 	return sweet_code
 
-class CssFormatter(Scanner):
+class CssFormatter(SourceIO):
 	"""css formatter"""
 	def __init__(self, source, output_stream, opts=CssFormatOptions()):
 		super(CssFormatter, self).__init__(source, output_stream)

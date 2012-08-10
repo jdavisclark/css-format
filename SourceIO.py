@@ -5,10 +5,11 @@ from StringIO import StringIO
 from collections import deque
 
 
-class Scanner(object):
-	"""base scanner"""
+class SourceIO(object):
+	"""Base class for scanning string/textfile source with lookback support.
+	Also provides a stream based output mechanism with an output lookback buffer"""
 	def __init__(self, source, output):		
-		super(Scanner, self).__init__()
+		super(SourceIO, self).__init__()
 		
 		source_type = type(source)
 		self.re_whitespace = re.compile(r"^\s+$")

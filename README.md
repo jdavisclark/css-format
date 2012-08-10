@@ -74,4 +74,4 @@ soutput.close()
 ```
 
 ### Why isn't everything in one big file?
-Becuase everything in scanner.py is generic and can be re-used. Feel free to throw the contents of scanner.py in to cssformat.py and delete `from scanner import Scanner` before you use it. I may add a pre-commit hook to do this automatically in the future.
+Becuase everything in SourceIO.py is generic and can be re-used. Feel free to throw the contents of SourceIO.py in to cssformat.py and delete `from SourceIO import SourceIO` before you use it. I may add a pre-commit hook to do this automatically in the future.
