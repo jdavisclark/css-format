@@ -25,17 +25,21 @@ class CssFormatOptions(object):
 		self.close_output=False
 
 
+
+
 # Forked from: http://www.python-forum.org/pythonforum/viewtopic.php?f=2&t=24947
 def word_wrap(string, width=80, pre_first=0, pre_middle=0, prefix='', separators=[" "], keep_separators=False, trim=True, newline="\n"):
-    """ word wrapping function.
-        string: the string to wrap
-        width: the column number to wrap at
-        prefix: prefix each line with this string
-        pre_first: prefix the first line with this number of prefixes
-        pre_middle: prefix other lines with this number of prefixes
-        separators: token delimiters for safe line termination
-        keep_separators: keep separators at line termination
-        trim: rstrip each line
+    """ 
+    word wrapping function.
+    
+    string: the string to wrap
+    width: the column number to wrap at
+    prefix: prefix each line with this string
+    pre_first: prefix the first line with this number of prefixes
+    pre_middle: prefix other lines with this number of prefixes
+    separators: token delimiters for safe line termination
+    keep_separators: keep separators at line termination
+    trim: rstrip each line
     """
     string = (prefix * pre_first) + string
     newstring = ""
